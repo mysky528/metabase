@@ -73,7 +73,8 @@
     "stack-source-map": "^1.0.4",
     "tether": "^1.2.0",
     "underscore": "^1.8.3",
-    "z-index": "0.0.1"
+    "z-index": "0.0.1",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@slack/client": "^3.5.4",
@@ -168,7 +169,9 @@
     "precommit": "lint-staged",
     "preinstall": "echo $npm_execpath | grep -q yarn || echo '\\033[0;33mSorry, npm is not supported. Please use Yarn (https://yarnpkg.com/).\\033[0m'",
     "prettier": "prettier --tab-width 4 --write 'frontend/src/metabase/{qb,new_question}/**/*.js*' 'frontend/src/metabase-lib/**/*.js'",
-    "docs": "documentation build -f html -o frontend/docs frontend/src/metabase-lib/lib/**"
+    "docs": "documentation build -f html -o frontend/docs frontend/src/metabase-lib/lib/**",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "lint-staged": {
     "frontend/src/metabase/{qb,new_question}/**/*.js*": [
@@ -179,5 +182,6 @@
       "prettier --tab-width 4 --write",
       "git add"
     ]
-  }
+  },
+  "snyk": true
 }
